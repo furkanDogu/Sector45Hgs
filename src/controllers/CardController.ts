@@ -1,6 +1,6 @@
 import _unset from 'lodash/unset';
 
-import { Card, Subscriber } from '@entities';
+import { Card, Subscriber, Operation } from '@entities';
 
 import { RequestHandler } from '@appTypes/RequestTypes';
 
@@ -18,6 +18,11 @@ export class CardController {
             }).save();
 
             _unset(card, ['__subscriber__']);
+
+            await Operation.create({
+                card,
+                amount,
+            }).save();
 
             res.status(200).send({ card });
         } catch (error) {
