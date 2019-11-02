@@ -1,0 +1,61 @@
+{
+    "name": "sector45hgs",
+    "version": "1.0.0",
+    "description": "Back-end application for a banking app prototype",
+    "main": "src/index.js",
+    "_moduleAliases": {
+        "@utils": "src/utils",
+        "@entities": "src/entities",
+        "@controllers": "src/controllers",
+        "@config": "src/appConfig.ts",
+        "@type": "src/types",
+        "@middlewares": "src/middlewares",
+        "@appTypes": "src/types"
+    },
+    "scripts": {
+        "dev": "ts-node-dev --no-notify -r tsconfig-paths/register src/index.ts",
+        "ts-node": "ts-node -r tsconfig-paths/register",
+        "db:migration:create": "npm run ts-node node_modules\\typeorm\\cli.js migration:create -- -n",
+        "db:migration:generate": "npm run ts-node node_modules\\typeorm\\cli.js migration:generate -- -n",
+        "db:migration:run": "npm run ts-node node_modules\\typeorm\\cli.js migration:run",
+        "db:create": "ts-node -- ./src/scripts/createDB",
+        "db:drop": "ts-node -- ./src/scripts/dropDB",
+        "db:reset": "npm run db:drop && npm run db:create && npm run db:migration:run"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/bcrypt": "^3.0.0",
+        "@types/cors": "^2.8.6",
+        "@types/helmet": "0.0.44",
+        "@types/jsonwebtoken": "^8.3.4",
+        "@types/lodash": "^4.14.144",
+        "@types/mssql": "^4.3.1",
+        "@types/shortid": "0.0.29",
+        "bcrypt": "^3.0.6",
+        "body-parser": "^1.19.0",
+        "class-transformer": "^0.2.3",
+        "class-validator": "^0.10.1",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "helmet": "^3.21.1",
+        "jsonwebtoken": "^8.5.1",
+        "lodash": "^4.17.15",
+        "msnodesqlv8": "^0.8.3",
+        "mssql": "^5.1.0",
+        "shortid": "^2.2.15",
+        "ts-node": "^8.4.1",
+        "ts-node-dev": "^1.0.0-pre.43",
+        "tsconfig-paths": "^3.9.0",
+        "typeorm": "^0.2.19"
+    },
+    "devDependencies": {
+        "tslint": "^5.20.0",
+        "tslint-config-airbnb": "^5.11.2",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-loader": "^3.5.4",
+        "tslint-plugin-prettier": "^2.0.1",
+        "typescript": "^3.6.3"
+    }
+}
