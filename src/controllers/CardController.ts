@@ -17,14 +17,17 @@ export class CardController {
                 subscriber,
             }).save();
 
-            _unset(card, ['__subscriber__']);
-
             await Operation.create({
                 card,
                 amount,
             }).save();
 
-            res.status(200).send({ data: card });
+            _unset(card, ['__subscriber__']);
+            _unset(card, ['__operations__']);
+            _unset(card, ['__has_operations__']);
+            _unset(card, ['__has_subscriber__']);
+
+            res.status(200).send({ data: [card] });
         } catch (error) {
             res.status(400).send({ error: error['message'] ? error['message'] : error });
         }
