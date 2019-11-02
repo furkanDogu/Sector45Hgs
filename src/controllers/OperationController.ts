@@ -37,7 +37,7 @@ export class OperationController {
             const { cardId } = req.params;
             const card = await Card.findOneOrFail(cardId);
 
-            res.status(200).send({ operations: await Operation.find({ card }) });
+            res.status(200).send({ data: await Operation.find({ card }) });
         } catch (error) {
             res.status(400).send({ error: error['message'] ? error['message'] : error });
         }
@@ -47,7 +47,7 @@ export class OperationController {
             const operations = Promise.all(
                 (await Operation.find()).map(async opr => ({ ...opr, card: await opr.card }))
             );
-            res.status(200).send({ operations: await operations });
+            res.status(200).send({ data: await operations });
         } catch (error) {
             res.status(400).send({ error: error['message'] ? error['message'] : error });
         }
