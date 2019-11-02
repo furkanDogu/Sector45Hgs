@@ -33,7 +33,7 @@ export class CardController {
 
             res.status(200).send({ cards: await subscriber.cards });
         } catch (error) {
-            res.status(400).send({ error: error['message'] ? error['message'] : error });
+            res.status(401).send({ error: 'No availabla card' });
         }
     };
 
