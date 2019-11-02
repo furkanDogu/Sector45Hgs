@@ -37,7 +37,7 @@ export class SubscriberController {
             }
 
             res.status(200).send({
-                cards: await subsWithCards.cards,
+                data: await subsWithCards.cards,
             });
         } catch (error) {
             res.status(400).send({ error: error['message'] ? error['message'] : error });

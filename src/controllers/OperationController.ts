@@ -25,7 +25,7 @@ export class OperationController {
 
             _unset(operation, ['__card__']);
 
-            res.status(200).send({ operation });
+            res.status(200).send({ data: operation });
         } catch (error) {
             console.log(error);
             res.status(400).send({ error: error['message'] ? error['message'] : error });

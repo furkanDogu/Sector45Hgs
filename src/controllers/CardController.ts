@@ -24,7 +24,7 @@ export class CardController {
                 amount,
             }).save();
 
-            res.status(200).send({ card });
+            res.status(200).send({ data: card });
         } catch (error) {
             res.status(400).send({ error: error['message'] ? error['message'] : error });
         }
@@ -36,7 +36,7 @@ export class CardController {
         try {
             const subscriber = await Subscriber.findOneOrFail({ TCKN });
 
-            res.status(200).send({ cards: await subscriber.cards });
+            res.status(200).send({ data: await subscriber.cards });
         } catch (error) {
             res.status(401).send({ error: 'No availabla card' });
         }
